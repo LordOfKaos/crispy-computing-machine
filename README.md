@@ -20,7 +20,7 @@ npm run build    # typecheck + production build
 
 ## Deployment (GitHub Pages)
 
-`.github/workflows/deploy.yml` builds the site with Vite on every push to `main` or `feature/partner-portal`, and deploys it to GitHub Pages. Pull requests run the build only, as a check.
+`.github/workflows/deploy.yml` builds the site with Vite on every push to `main` and deploys it to GitHub Pages. Pull requests run the build only, as a check.
 
 - One-time setup: in **Settings → Pages**, set **Source** to **GitHub Actions**.
 - The site is served at `https://<owner>.github.io/<repo>/`. The workflow passes `BASE_PATH=/<repo>/` to Vite, and the router uses it as its basename.
