@@ -18,6 +18,15 @@ npm run dev      # http://localhost:5173
 npm run build    # typecheck + production build
 ```
 
+## Deployment (GitHub Pages)
+
+`.github/workflows/deploy.yml` builds the site with Vite on every push to `main` or `feature/partner-portal`, and deploys it to GitHub Pages. Pull requests run the build only, as a check.
+
+- One-time setup: in **Settings → Pages**, set **Source** to **GitHub Actions**.
+- The site is served at `https://<owner>.github.io/<repo>/`. The workflow passes `BASE_PATH=/<repo>/` to Vite, and the router uses it as its basename.
+- `index.html` is copied to `404.html` so deep links (e.g. `/crm/opportunities`) load the app.
+- Pages hosting is public. The live site shows dummy data only. Don't point it at real Dataverse data without adding authentication.
+
 ## Data and Dataverse
 
 All data access goes through the `DataService` interface (`src/services/dataService.ts`). There are two implementations:
